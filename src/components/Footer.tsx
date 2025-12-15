@@ -1,5 +1,7 @@
 import { Linkedin, Twitter, Facebook } from "lucide-react";
 import { Logo } from "./Logo";
+import React from "react";
+// React
 
 export function Footer() {
   return (
@@ -72,19 +74,19 @@ export function Footer() {
             <div className="flex gap-4">
               <a
                 href="#"
-                className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-[#1E5AA8] transition-colors"
+                className="w-10 h-10 bg-slate-800 rounded-sm flex items-center justify-center hover:bg-[#1E5AA8] transition-colors"
               >
                 <Linkedin size={20} />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-[#1E5AA8] transition-colors"
+                className="w-10 h-10 bg-slate-800 rounded-sm flex items-center justify-center hover:bg-[#1E5AA8] transition-colors"
               >
                 <Twitter size={20} />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-[#1E5AA8] transition-colors"
+                className="w-10 h-10 bg-slate-800 rounded-sm flex items-center justify-center hover:bg-[#1E5AA8] transition-colors"
               >
                 <Facebook size={20} />
               </a>

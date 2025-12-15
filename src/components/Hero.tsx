@@ -18,9 +18,9 @@ const slides = [
   },
   {
     image: "https://images.unsplash.com/photo-1554224155-cfa08c2a758f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGF1ZGl0JTIwZG9jdW1lbnRzfGVufDF8fHx8MTc2NTExMDc5NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    subtitle: "Prevención de Lavado de Activos (PLAFT)",
-    description: "Protegemos tu organización contra riesgos financieros",
-    label: "PLAFT"
+    subtitle: "Prevención de Lavado de Activos (SPLAFT)",
+    description: "Protegemos tu organización frente a riesgos de LA/FT, sanciones y daños reputacionales.",
+    label: "SPLAFT"
   },
   {
     image: "https://images.unsplash.com/photo-1758691736067-b309ee3ef7b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB0cmFpbmluZyUyMHNlbWluYXJ8ZW58MXx8fHwxNzY1MDE1NTE1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
@@ -31,7 +31,7 @@ const slides = [
   {
     image: "https://images.unsplash.com/photo-1589307904488-7d60ff29c975?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsZWdhbCUyMGludmVzdGlnYXRpb258ZW58MXx8fHwxNzY1MTEwNzk0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
     subtitle: "Investigaciones Internas y Due Diligence",
-    description: "Análisis exhaustivo para la toma de decisiones informada",
+    description: "Información clara para decisiones seguras.",
     label: "Investigaciones"
   }
 ];

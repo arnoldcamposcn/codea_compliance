@@ -1,6 +1,6 @@
 import { CheckCircle } from "lucide-react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import React, { useRef } from "react";
 
 const benefits = [
   "Blindaje legal y regulatorio",
@@ -52,11 +52,26 @@ export function Benefits() {
             <motion.div
               key={index}
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="flex items-start gap-4 bg-slate-800/50 p-6 rounded-lg hover:bg-slate-800 transition-colors"
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ 
+                duration: 0.6, 
+                delay: index * 0.08,
+                ease: [0.25, 0.1, 0.25, 1]
+              }}
+              whileHover={{ 
+                x: index % 2 === 0 ? 5 : -5,
+                scale: 1.02,
+                transition: { duration: 0.3, ease: "easeOut" }
+              }}
+              className="flex items-start gap-4 bg-slate-800/50 p-6 rounded-sm hover:bg-slate-800 transition-colors cursor-pointer"
             >
-              <CheckCircle className="text-[#1E5AA8] flex-shrink-0 mt-1" size={24} />
+              <motion.div
+                whileHover={{ scale: 1.2, rotate: 360 }}
+                transition={{ duration: 0.5 }}
+              >
+                <CheckCircle className="text-[#1E5AA8] flex-shrink-0 mt-1" size={24} />
+              </motion.div>
               <p className="text-slate-200">{benefit}</p>
             </motion.div>
           ))}

@@ -18,13 +18,8 @@ export function Contact() {
     message: "",
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus("idle");
 
     // Mapear los datos del formulario a los nombres esperados por Google Sheets
     const dataToSend = {
@@ -50,7 +45,6 @@ export function Contact() {
       try {
         const result = await response.json();
         if (result.success) {
-          setSubmitStatus("success");
           setFormData({ name: "", company: "", email: "", phone: "", country: null, services: "", message: "" });
           alert("Gracias por contactarnos. Nos pondremos en contacto pronto.");
         } else {
@@ -59,16 +53,12 @@ export function Contact() {
       } catch (parseError) {
         // Si no podemos leer la respuesta (por CORS), asumimos éxito
         // ya que Google Apps Script procesó la petición
-        setSubmitStatus("success");
         setFormData({ name: "", company: "", email: "", phone: "", country: null, services: "", message: "" });
         alert("Gracias por contactarnos. Nos pondremos en contacto pronto.");
       }
     } catch (error) {
       console.error("Error al enviar el formulario:", error);
-      setSubmitStatus("error");
       alert("Hubo un error al enviar el formulario. Por favor, intenta nuevamente.");
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -223,7 +213,10 @@ export function Contact() {
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ 
+            duration: 0.8,
+            ease: [0.25, 0.1, 0.25, 1]
+          }}
           className="text-center mb-16"
         >
           <h2 className="text-white mb-4 text-[24px] font-bold">Solicita una consulta</h2>
@@ -237,48 +230,76 @@ export function Contact() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ 
+              duration: 0.8, 
+              delay: 0.2,
+              ease: [0.25, 0.1, 0.25, 1]
+            }}
           >
             <h3 className="text-white mb-8">Información de Contacto</h3>
             <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-[#1E5AA8] rounded-lg flex items-center justify-center flex-shrink-0">
+              <motion.div 
+                className="flex items-start gap-4"
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                <motion.div 
+                  className="w-12 h-12 bg-[#1E5AA8] rounded-sm flex items-center justify-center flex-shrink-0"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <Mail className="text-white" size={24} />
-                </div>
+                </motion.div>
                 <div>
                   <p className="text-slate-300 mb-1">Email</p>
                   <a href="mailto:info@codeacompliance.com" className="text-white hover:text-[#4A7BC0] transition-colors">
                     info@codeacompliance.com
                   </a>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-[#1E5AA8] rounded-lg flex items-center justify-center flex-shrink-0">
+              <motion.div 
+                className="flex items-start gap-4"
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                <motion.div 
+                  className="w-12 h-12 bg-[#1E5AA8] rounded-sm flex items-center justify-center flex-shrink-0"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <Phone className="text-white" size={24} />
-                </div>
+                </motion.div>
                 <div>
                   <p className="text-slate-300 mb-1">Teléfono</p>
                   <a href="tel:+51900000000" className="text-white hover:text-[#4A7BC0] transition-colors">
                     +51 900 000 000
                   </a>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-[#1E5AA8] rounded-lg flex items-center justify-center flex-shrink-0">
+              <motion.div 
+                className="flex items-start gap-4"
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                <motion.div 
+                  className="w-12 h-12 bg-[#1E5AA8] rounded-sm flex items-center justify-center flex-shrink-0"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <MapPin className="text-white" size={24} />
-                </div>
+                </motion.div>
                 <div>
                   <p className="text-slate-300 mb-1">Dirección</p>
                   <p className="text-white">
                     Lima, Perú
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
-            <div className="mt-12 p-6 bg-[#1E5AA8]/10 border border-[#1E5AA8]/20 rounded-lg">
+            <div className="mt-12 p-6 bg-[#1E5AA8]/10 border border-[#1E5AA8]/20 rounded-sm">
               <p className="text-white mb-2 flex items-center gap-2">
                 <Clock size={20} className="text-[#4A7BC0]" />
                 Horario de Atención
@@ -294,7 +315,7 @@ export function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="mt-8 rounded-lg overflow-hidden border border-[#1E5AA8]/20"
+              className="mt-8 rounded-sm overflow-hidden border border-[#1E5AA8]/20"
             >
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124815.94309868427!2d-77.11927045!3d-12.046374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c5f619ee3ec7%3A0x14206cb9cc452e4a!2sLima%2C%20Peru!5e0!3m2!1sen!2s!4v1234567890"
@@ -313,7 +334,11 @@ export function Contact() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ 
+              duration: 0.8, 
+              delay: 0.4,
+              ease: [0.25, 0.1, 0.25, 1]
+            }}
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
@@ -327,7 +352,7 @@ export function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-[#1E5AA8] transition-colors"
+                  className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#1E5AA8] transition-colors"
                   placeholder="Tu nombre"
                 />
               </div>
@@ -343,7 +368,7 @@ export function Contact() {
                   value={formData.company}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-[#1E5AA8] transition-colors"
+                  className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#1E5AA8] transition-colors"
                   placeholder="Tu empresa"
                 />
               </div>
@@ -360,7 +385,7 @@ export function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-[#1E5AA8] transition-colors"
+                    className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#1E5AA8] transition-colors"
                     placeholder="tu@email.com"
                   />
                 </div>
@@ -375,7 +400,7 @@ export function Contact() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-[#1E5AA8] transition-colors"
+                    className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#1E5AA8] transition-colors"
                     placeholder="+51 900 000 000"
                   />
                 </div>
@@ -411,7 +436,7 @@ export function Contact() {
                   name="services"
                   value={formData.services}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-[#1E5AA8] transition-colors"
+                  className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#1E5AA8] transition-colors"
                   placeholder="Ej: PLAFT, Auditoría, Capacitación"
                 />
               </div>
@@ -427,20 +452,19 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-[#1E5AA8] transition-colors resize-none"
+                  className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#1E5AA8] transition-colors resize-none"
                   placeholder="Cuéntanos sobre tus necesidades de compliance..."
                 />
               </div>
 
               <motion.button
-                whileHover={!isSubmitting ? { scale: 1.02 } : {}}
-                whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
-                disabled={isSubmitting}
-                className="w-full px-8 py-4 bg-[#1E5AA8] text-white rounded-lg hover:bg-[#0F3E73] transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-8 py-4 bg-[#1E5AA8] text-white rounded-sm hover:bg-[#0F3E73] transition-colors flex items-center justify-center gap-2"
               >
-                <span>{isSubmitting ? "Enviando..." : "Solicitar Evaluación Inicial"}</span>
-                {!isSubmitting && <Send size={20} />}
+                <span>Solicitar Evaluación Inicial</span>
+                <Send size={20} />
               </motion.button>
             </form>
           </motion.div>

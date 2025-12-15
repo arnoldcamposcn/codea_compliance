@@ -12,7 +12,7 @@ const services = [
   {
     icon: Shield,
     title: "Asesoría en Prevención de Lavado de Activos y Financiamiento del Terrorismo (SPLAFT)",
-    description: "Diseñamos y fortalecemos el Sistema de Prevención de Lavado de Activos y Financiamiento del Terrorismo (SPLAFT) de acuerdo con la normativa de la UIF-Perú, contribuyendo a reducir observaciones supervisoras, sanciones y riesgos penales vinculados al LA/FT.",
+    description: "Diseñamos y fortalecemos el Sistema de Prevención de Lavado de Activos y Financiamiento del Terrorismo (SPLAFT) de acuerdo con la normativa de la UIF-Perú, contribuyendo a reducir sanciones y riesgos penales vinculados al LA/FT.",
   },
   {
     icon: Globe,
@@ -85,8 +85,16 @@ export function Services() {
               key={service.title}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-lg shadow-sm overflow-hidden"
+              transition={{ 
+                duration: 0.5, 
+                delay: index * 0.1,
+                ease: [0.25, 0.1, 0.25, 1]
+              }}
+              whileHover={{ 
+                scale: 1.02,
+                transition: { duration: 0.3, ease: "easeOut" }
+              }}
+              className="bg-white rounded-sm shadow-sm overflow-hidden"
             >
               <button
                 onClick={() => toggleAccordion(index)}
@@ -96,16 +104,20 @@ export function Services() {
                   <motion.div
                     animate={{
                       backgroundColor: openIndex === index ? "#1E5AA8" : "#F4F6F8",
+                      scale: openIndex === index ? 1.1 : 1,
                     }}
-                    transition={{ duration: 0.3 }}
-                    className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+                    transition={{ 
+                      duration: 0.3,
+                      ease: [0.25, 0.1, 0.25, 1]
+                    }}
+                    className="w-12 h-12 rounded-sm flex items-center justify-center flex-shrink-0"
                   >
                     <service.icon
                       className={openIndex === index ? "text-white" : "text-[#1E5AA8]"}
                       size={24}
                     />
                   </motion.div>
-                  <h3 className="text-slate-900">{service.title}</h3>
+                  <h3 className="text-slate-900 font-bold">{service.title}</h3>
                 </div>
                 <motion.div
                   animate={{ rotate: openIndex === index ? 180 : 0 }}

@@ -9,6 +9,7 @@ import { WhyCompliance } from "./components/WhyCompliance";
 import { Approach } from "./components/Approach";
 import { Benefits } from "./components/Benefits";
 import { Sectors } from "./components/Sectors";
+import { WhatsAppButton } from "./components/WhatsAppButton";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
       <About />
       <Contact />
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { Award } from "lucide-react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 export function About() {
@@ -76,7 +76,7 @@ export function About() {
           >
             <motion.div 
               style={{ y: imageY }}
-              className="relative rounded-lg overflow-hidden shadow-2xl"
+              className="relative rounded-sm overflow-hidden shadow-2xl"
             >
               <ImageWithFallback
                 src="https://images.unsplash.com/photo-1496180470114-6ef490f3ff22?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMG1lZXRpbmclMjBwcm9mZXNzaW9uYWx8ZW58MXx8fHwxNzY0OTUyMzc1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
@@ -89,7 +89,7 @@ export function About() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="absolute -bottom-6 -left-6 bg-[#1E5AA8] text-white p-8 rounded-lg shadow-xl"
+              className="absolute -bottom-6 -left-6 bg-[#1E5AA8] text-white p-8 rounded-sm shadow-xl"
             >
               <p className="mb-1">Certificación ISO</p>
               <div>27001:2022</div>

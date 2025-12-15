@@ -23,7 +23,7 @@ export function WhyCompliance() {
       />
       <motion.div
         style={{ y: useTransform(scrollYProgress, [0, 1], [-50, 50]) }}
-        className="absolute bottom-20 left-10 w-96 h-96 bg-[#F4F6F8] rounded-full blur-3xl"
+        className="absolute bottom-20 left-10 w-96 h-96 bg-[#F4F6F8] rounded-sm blur-3xl"
       />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -40,14 +40,35 @@ export function WhyCompliance() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ 
+              duration: 0.6, 
+              delay: 0.1,
+              ease: [0.25, 0.1, 0.25, 1]
+            }}
+            whileHover={{ 
+              y: -10,
+              transition: { duration: 0.3, ease: "easeOut" }
+            }}
             className="text-center"
           >
-            <div className="w-16 h-16 bg-[#F4F6F8] rounded-full flex items-center justify-center mx-auto mb-6">
-              <AlertTriangle className="text-[#1E5AA8]" size={32} />
-            </div>
-            <h3 className="text-slate-900 mb-4">Entorno Regulatorio Exigente</h3>
+            <motion.div 
+              className="w-16 h-16 bg-[#F4F6F8] rounded-full flex items-center justify-center mx-auto mb-6"
+              whileHover={{ 
+                scale: 1.15,
+                rotate: 360,
+                backgroundColor: "#1E5AA8"
+              }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.2 }}
+              >
+                <AlertTriangle className="text-[#1E5AA8]" size={32} />
+              </motion.div>
+            </motion.div>
+            <h3 className="text-slate-900 mb-4 font-bold">Entorno Regulatorio Exigente</h3>
             <p className="text-slate-600">
               Hoy las empresas no solo deben cumplir la ley, sino también demostrar que hacen las cosas bien, construyendo una cultura de integridad y una gestión de riesgos alineada con las mejores prácticas internacionales.
             </p>
@@ -55,14 +76,35 @@ export function WhyCompliance() {
 
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ 
+              duration: 0.6, 
+              delay: 0.2,
+              ease: [0.25, 0.1, 0.25, 1]
+            }}
+            whileHover={{ 
+              y: -10,
+              transition: { duration: 0.3, ease: "easeOut" }
+            }}
             className="text-center"
           >
-            <div className="w-16 h-16 bg-[#F4F6F8] rounded-full flex items-center justify-center mx-auto mb-6">
-              <Shield className="text-[#1E5AA8]" size={32} />
-            </div>
-            <h3 className="text-slate-900 mb-4">Prevención y Gestión de Riesgos</h3>
+            <motion.div 
+              className="w-16 h-16 bg-[#F4F6F8] rounded-full flex items-center justify-center mx-auto mb-6"
+              whileHover={{ 
+                scale: 1.15,
+                rotate: 360,
+                backgroundColor: "#1E5AA8"
+              }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.2 }}
+              >
+                <Shield className="text-[#1E5AA8]" size={32} />
+              </motion.div>
+            </motion.div>
+            <h3 className="text-slate-900 mb-4 font-bold">Prevención y Gestión de Riesgos</h3>
             <p className="text-slate-600">
               Un programa de compliance permite identificar, prevenir y mitigar riesgos legales y penales, sanciones, y daños reputacionales, protegiendo tanto los activos como la continuidad del negocio.
             </p>
@@ -70,14 +112,35 @@ export function WhyCompliance() {
 
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ 
+              duration: 0.6, 
+              delay: 0.3,
+              ease: [0.25, 0.1, 0.25, 1]
+            }}
+            whileHover={{ 
+              y: -10,
+              transition: { duration: 0.3, ease: "easeOut" }
+            }}
             className="text-center"
           >
-            <div className="w-16 h-16 bg-[#F4F6F8] rounded-full flex items-center justify-center mx-auto mb-6">
-              <TrendingUp className="text-[#1E5AA8]" size={32} />
-            </div>
-            <h3 className="text-slate-900 mb-4">Compromiso con la Ética</h3>
+            <motion.div 
+              className="w-16 h-16 bg-[#F4F6F8] rounded-full flex items-center justify-center mx-auto mb-6"
+              whileHover={{ 
+                scale: 1.15,
+                rotate: 360,
+                backgroundColor: "#1E5AA8"
+              }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.2 }}
+              >
+                <TrendingUp className="text-[#1E5AA8]" size={32} />
+              </motion.div>
+            </motion.div>
+            <h3 className="text-slate-900 mb-4 font-bold">Compromiso con la Ética</h3>
             <p className="text-slate-600">
               Una cultura de integridad permite reducir conductas de riesgo, facilitar la relación con autoridades y clientes, fortalecer la confianza de inversionistas y mejorar el clima laboral, generando decisiones más sólidas y negocios sostenibles en el tiempo.
             </p>

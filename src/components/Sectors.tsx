@@ -1,5 +1,5 @@
 import { Factory, Briefcase, MoreHorizontal } from "lucide-react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform, useInView } from "motion/react";
 import { useRef } from "react";
 import React from "react";
 
@@ -60,17 +60,36 @@ export function Sectors() {
           {sectors.map((sector, index) => (
             <motion.div
               key={sector.title}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
-              style={{
-                y: index % 2 === 0 ? y : y
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ 
+                duration: 0.6, 
+                delay: index * 0.1,
+                ease: [0.25, 0.1, 0.25, 1]
               }}
+              whileHover={{ 
+                y: -8,
+                transition: { duration: 0.3, ease: "easeOut" }
+              }}
+              className="bg-white p-6 rounded-sm shadow-sm hover:shadow-xl transition-shadow cursor-pointer"
             >
-              <div className="w-12 h-12 bg-[#F4F6F8] rounded-lg flex items-center justify-center mb-4">
-                <sector.icon className="text-[#1E5AA8]" size={24} />
-              </div>
+              <motion.div 
+                className="w-12 h-12 bg-[#F4F6F8] rounded-sm flex items-center justify-center mb-4"
+                whileHover={{ 
+                  scale: 1.1,
+                  rotate: 5,
+                  backgroundColor: "#1E5AA8"
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <sector.icon className="text-[#1E5AA8]" size={24} />
+                </motion.div>
+              </motion.div>
               <h3 className="text-slate-900 mb-2">{sector.title}</h3>
               <p className="text-slate-600">{sector.description}</p>
             </motion.div>
