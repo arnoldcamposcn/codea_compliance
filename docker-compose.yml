@@ -1,0 +1,26 @@
+services:
+  legal_frontend:
+    build: .
+    image: legal_frontend-react-app
+    container_name: legal_frontend_container
+    restart: always
+    expose:
+      - "80"
+    labels:
+      - "traefik.enable=true"
+
+      # Dominio legal
+      - "traefik.http.routers.legal_front.rule=Host(`legal.codeauni.com`)"
+      - "traefik.http.routers.legal_front.entrypoints=web,websecure"
+      - "traefik.http.routers.legal_front.tls=true"
+      - "traefik.http.routers.legal_front.tls.certresolver=mytlschallenge"
+
+      # Puerto interno
+      - "traefik.http.services.legal_front.loadbalancer.server.port=80"
+
+    networks:
+      - root_default
+
+networks:
+  root_default:
+    external: true
