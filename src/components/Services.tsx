@@ -103,7 +103,7 @@ export function Services() {
                 <div className="flex items-center gap-4 flex-1">
                   <motion.div
                     animate={{
-                      backgroundColor: openIndex === index ? "#1E5AA8" : "#F4F6F8",
+                      backgroundColor: openIndex === index ? "#3BC1AA" : "#F4F6F8",
                       scale: openIndex === index ? 1.1 : 1,
                     }}
                     transition={{ 
@@ -113,7 +113,7 @@ export function Services() {
                     className="w-12 h-12 rounded-sm flex items-center justify-center flex-shrink-0"
                   >
                     <service.icon
-                      className={openIndex === index ? "text-white" : "text-[#1E5AA8]"}
+                      className={openIndex === index ? "text-white" : "text-[#3BC1AA]"}
                       size={24}
                     />
                   </motion.div>

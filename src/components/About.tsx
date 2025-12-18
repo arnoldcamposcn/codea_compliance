@@ -89,7 +89,8 @@ export function About() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="absolute -bottom-6 -left-6 bg-[#1E5AA8] text-white p-8 rounded-sm shadow-xl"
+              style={{ backgroundColor: '#3BC1AA' }}
+              className="absolute -bottom-6 -left-6 text-white p-8 rounded-sm shadow-xl"
             >
               <p className="mb-1">Certificación ISO</p>
               <div>27001:2022</div>

@@ -104,9 +104,10 @@ export function Hero() {
           className="mb-12"
         >
           <h1 className="text-6xl md:text-7xl lg:text-8xl text-white mb-3 tracking-tight">
-            CODEa <span className="text-slate-400">Compliance</span>
+            CODEa <span style={{ color: '#3BC1AA' }}>Compliance</span>
           </h1>
-          <div className="w-24 h-px bg-[#1E5AA8] mx-auto mt-6" />
+          <div className="w-24 h-px bg-white mx-auto mt-6" />
+
         </motion.div>
 
         <div className="mb-8 min-h-[120px] md:min-h-[100px] flex flex-col items-center justify-center">

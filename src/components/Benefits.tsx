@@ -70,7 +70,7 @@ export function Benefits() {
                 whileHover={{ scale: 1.2, rotate: 360 }}
                 transition={{ duration: 0.5 }}
               >
-                <CheckCircle className="text-[#1E5AA8] flex-shrink-0 mt-1" size={24} />
+                <CheckCircle style={{ color: '#3BC1AA' }} className="flex-shrink-0 mt-1" size={24} />
               </motion.div>
               <p className="text-slate-200">{benefit}</p>
             </motion.div>
