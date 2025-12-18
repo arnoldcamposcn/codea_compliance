@@ -9,8 +9,8 @@ services:
     labels:
       - "traefik.enable=true"
 
-      # Dominio legal
-      - "traefik.http.routers.legal_front.rule=Host(`legal.codeauni.com`)"
+      # Dominios
+      - "traefik.http.routers.legal_front.rule=Host(`legal.codeauni.com`) || Host(`www.legal.codeauni.com`)"
       - "traefik.http.routers.legal_front.entrypoints=web,websecure"
       - "traefik.http.routers.legal_front.tls=true"
       - "traefik.http.routers.legal_front.tls.certresolver=mytlschallenge"
